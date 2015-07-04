@@ -1,0 +1,5 @@
+List the names, instance IDs, and private IPs of all our running EC2 instances.
+
+mochla2
+instance ID: i-8bf85a43
+ private IP: 10.0.9.213
