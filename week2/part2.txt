@@ -1,0 +1,3 @@
+Mustafa: you found the public ID by viewing the instances on AWS console, look for the name of the instance. Click on it then scroll to the right and you will find a public ID column
+
+
