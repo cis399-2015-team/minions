@@ -1,0 +1,58 @@
+Script started on Tue 14 Jul 2015 01:34:35 AM UTC
+]0;root@ip-10-0-9-213: /etc/puppet/manifestsroot@ip-10-0-9-213:/etc/puppet/manifests# lscd ssh[1Pls -lcd ..puppet agent -t[10Pcd ..git statuspush origin master[12Pstatus[5Pcd ..puppet agent -t[10Pcd ..ls -lcd ssh[4Pls[Kservice ssh stop
+ssh stop/waiting
+]0;root@ip-10-0-9-213: /etc/puppet/manifestsroot@ip-10-0-9-213:/etc/puppet/manifests# puppet agent -t
+[0;32mInfo: Retrieving plugin[0m
+[0;32mInfo: Caching catalog for ip-10-0-9-213.us-west-2.compute.internal[0m
+[0;32mInfo: Applying configuration version '1436837491'[0m
+[mNotice: /Stage[main]/Sshd/Service[ssh]/ensure: ensure changed 'stopped' to 'running'[0m
+[0;32mInfo: /Stage[main]/Sshd/Service[ssh]: Unscheduling refresh on Service[ssh][0m
+[mNotice: Finished catalog run in 0.21 seconds[0m
+]0;root@ip-10-0-9-213: /etc/puppet/manifestsroot@ip-10-0-9-213:/etc/puppet/manifests# service --status-all
+ [ + ]  acpid
+ [ + ]  apparmor
+ [ ? ]  apport
+ [ + ]  atd
+ [ ? ]  console-setup
+ [ + ]  cron
+ [ ? ]  cryptdisks
+ [ ? ]  cryptdisks-early
+ [ - ]  dbus
+ [ ? ]  dns-clean
+ [ + ]  friendly-recovery
+ [ - ]  grub-common
+ [ ? ]  irqbalance
+ [ ? ]  killprocs
+ [ ? ]  kmod
+ [ - ]  landscape-client
+ [ ? ]  networking
+ [ ? ]  ondemand
+ [ ? ]  open-vm-tools
+ [ ? ]  pppd-dns
+ [ - ]  procps
+ [ + ]  puppet
+ [ + ]  puppetmaster
+ [ + ]  puppetqd
+ [ ? ]  rc.local
+ [ + ]  resolvconf
+ [ - ]  rsync
+ [ + ]  rsyslog
+ [ ? ]  screen-cleanup
+ [ ? ]  sendsigs
+ [ - ]  ssh
+ [ - ]  sudo
+ [ + ]  udev
+ [ ? ]  umountfs
+ [ ? ]  umountnfs.sh
+ [ ? ]  umountroot
+ [ - ]  unattended-upgrades
+ [ - ]  urandom
+]0;root@ip-10-0-9-213: /etc/puppet/manifestsroot@ip-10-0-9-213:/etc/puppet/manifests# service ssh start
+start: Job is already running: ssh
+]0;root@ip-10-0-9-213: /etc/puppet/manifestsroot@ip-10-0-9-213:/etc/puppet/manifests# cd ~
+]0;root@ip-10-0-9-213: ~root@ip-10-0-9-213:~# ls
+authorized_keys_backup  [0m[01;34mgitrepo[0m
+]0;root@ip-10-0-9-213: ~root@ip-10-0-9-213:~# ls -al[K[K[K[K[K[Kexit
+exit
+
+Script done on Tue 14 Jul 2015 01:36:35 AM UTC
