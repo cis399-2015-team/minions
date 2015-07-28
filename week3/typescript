@@ -1,0 +1,41 @@
+Script started on Mon 20 Jul 2015 09:27:24 PM UTC
+]0;root@ip-10-0-9-51: ~root@ip-10-0-9-51:~# ap[K[Kexitpuppet agent -t[6Psudo bashpuppet agent -tcat sshd_configls[Kcd /etc/sshls[Kcat sshd_configpuppet agent -t[6Psudo bashpuppet agent -texit[K[Kapt-gety[K remove openssh-server
+Reading package lists... 0%Reading package lists... 100%Reading package lists... Done
+Building dependency tree... 0%Building dependency tree... 0%Building dependency tree... 50%Building dependency tree... 50%Building dependency tree       
+Reading state information... 0%Reading state information... 3%Reading state information... Done
+The following packages will be REMOVED:
+  openssh-server
+0 upgraded, 0 newly installed, 1 to remove and 13 not upgraded.
+After this operation, 951 kB disk space will be freed.
+Do you want to continue? [Y/n] y
+(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 80417 files and directories currently installed.)
+Removing openssh-server (1:6.6p1-2ubuntu2) ...
+ssh stop/waiting
+Processing triggers for man-db (2.6.7.1-1ubuntu1) ...
+]0;root@ip-10-0-9-51: ~root@ip-10-0-9-51:~# apt-get remove openssh-server[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cexit[Kpuppet agent -t
+[0;32mInfo: Retrieving plugin[0m
+[0;32mInfo: Caching catalog for ip-10-0-9-51.us-west-2.compute.internal[0m
+[0;32mInfo: Applying configuration version '1437427103'[0m
+[mNotice: /Stage[main]/Sshd/Package[openssh-server]/ensure: created[0m
+[mNotice: Finished catalog run in 2.17 seconds[0m
+]0;root@ip-10-0-9-51: ~root@ip-10-0-9-51:~# cd ert[K[K[K[K /etc/[K[K[K[K[K[K[K[Krm /etc/ssh/sshd_confi[K[Kfig
+]0;root@ip-10-0-9-51: ~root@ip-10-0-9-51:~# purm /etc/ssh/sshd_config[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[8Ppuppet agent -t
+[0;32mInfo: Retrieving plugin[0m
+[0;32mInfo: Caching catalog for ip-10-0-9-51.us-west-2.compute.internal[0m
+[0;32mInfo: Applying configuration version '1437427103'[0m
+[mNotice: /Stage[main]/Sshd/File[/etc/ssh/sshd_config]/ensure: defined content as '{md5}db3706831d16ac32d8665fbfb47dbd99'[0m
+[0;32mInfo: /Stage[main]/Sshd/File[/etc/ssh/sshd_config]: Scheduling refresh of Service[ssh][0m
+[mNotice: /Stage[main]/Sshd/Service[ssh]: Triggered 'refresh' from 1 events[0m
+[mNotice: Finished catalog run in 0.33 seconds[0m
+]0;root@ip-10-0-9-51: ~root@ip-10-0-9-51:~# rm .ssh [K[K[K[K[K/home/ubunt[Kruy[K[K[Kru[K[Ktu/ssh[K[K[K,[K.ssh/authorix[Kzed_keys
+]0;root@ip-10-0-9-51: ~root@ip-10-0-9-51:~# rm /home/ubuntu/.ssh/authorized_keys[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[21Ppuppet agent -trm /etc/ssh/sshd_config[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[8Ppuppet agent -t
+[0;32mInfo: Retrieving plugin[0m
+[0;32mInfo: Caching catalog for ip-10-0-9-51.us-west-2.compute.internal[0m
+[0;32mInfo: Applying configuration version '1437427103'[0m
+[mNotice: /Stage[main]/Sshd/Ssh_authorized_key[Mufassa-key]/ensure: created[0m
+[mNotice: /Stage[main]/Sshd/Ssh_authorized_key[lily-test]/ensure: created[0m
+[mNotice: /Stage[main]/Sshd/Ssh_authorized_key[dayv-key]/ensure: created[0m
+[mNotice: /Stage[main]/Sshd/Ssh_authorized_key[lily-key]/ensure: created[0m
+[mNotice: Finished catalog run in 0.16 seconds[0m
+]0;root@ip-10-0-9-51: ~root@ip-10-0-9-51:~# exit
+Script done on Mon 20 Jul 2015 09:31:14 PM UTC
