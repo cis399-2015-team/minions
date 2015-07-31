@@ -1,12 +1,12 @@
-List the names, instance IDs, and private IPs of all our running EC2 instances.
+ist the names, instance IDs, and private IPs of all our running EC2 instances.
 
 mochla2
 instance ID: i-8bf85a43
 private IP: 10.0.9.213
 
 mufassa100
-instance ID: i-a00baa68
-private IP: 10.0.9.34
+instance ID: i-9b09a253
+private IP: 10.0.9.51
 
 dayveboy
 instance ID: i-b202a97a

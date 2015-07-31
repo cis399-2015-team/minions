@@ -1,0 +1,74 @@
+
+
+Making a puppet module
+1. Install the package(s) of the service you want to modularize on your local instance
+2. Make a directory with an informative name in the modules directory in /etc/puppet
+This should describe what your module will do.
+3. In that directory (/etc/puppet/modules/<name>/) make another directory called "files"
+4. The files directory is where the configuration file for your module lives. 
+You will need to copy the existing configuration file from the package(s) you installed earlier. This will be in /etc/<package-name>/package-name.conf or something similar.
+do a cp /etc/<package-name>/package-name.conf /etc/puppet/modules/module-name/files/module-name_config
+This will give your module a configuration to start with.
+5. Go back to the <module-name> directory and make a new directory called "manifests"
+6. In the manifests directory - open/edit a file called init.pp.
+This contains the class heirarchy for your module. Put some informative comments at the top done with a # symbol preceeding the comments.
+Here is an example init.pp which I made to install and manage the apache2 web server package:
+
+# == Class: web-server
+#
+# Puppet management of apache2 http server version 2.4
+#
+# == Authors
+# CiS 399, 2015, Team Minions
+# Lily Moch <moch@uoregon.edu>
+#
+
+# I named the "class" after the module name
+class web-server {
+    # This tells the class which package to look for and use, and ensures it is installed"
+    package {
+        "apache2": ensure => installed;
+    }
+
+    # This tells the class which configuration file to update with the module configuration file
+    # In this case, apache2.conf will be updated with the puppet apache2_config file
+    file { "/etc/apache2/apache2.conf":
+        # For some reason, puppet doesn't need to know the exact directory path to know where the config file is
+	# Follow the below format to check for a local apache2_config first, then the general apache2_config
+        source  => [
+            "puppet:///modules/web-server/$hostname/apache2_config",
+            "puppet:///modules/web-server/apache2_config",
+        ],
+	# gives the permissions mode for the file
+        mode    => 600,
+	# gives the owner of the file - ubuntu or root will be fine for our purposes in most cases.
+        owner   => ubuntu,
+	# gives the group of the file
+        group   => ubuntu,
+        # package must be installed before config file
+        require => Package["apache2"],
+    }
+
+    # This tells the class the name of the service it will be running, it is important you get the ACTUAL name of the service
+    # as seen on your instance, you can do this with the command> service --status-all
+    # you will be presented with a list of all services on your instance, pick the one that seems like your service which you installed 
+    # The uncommented sections tell the service what to do if it's restarted, the config file is modified, etc. Most of these will be the same across modules. 
+    service {"apache2":
+        # automatically start at boot time
+        enable     => true,
+        # restart service if not running
+        ensure     => running,
+        # "service apache2 status returns useful status info
+        hasstatus  => true,
+        # can restart service
+        hasrestart => true,
+        # package and configuration must be present for service
+        require    => [ Package["apache2"],
+                     File["/etc/apache2/apache2.conf"] ],
+        # if you change the configuration, cause service to restart
+        subscribe  => File["/etc/apache2/apache2.conf"],
+    }
+}
+
+
+This is the basics of what you have to do - I don't think there is anything else which is required for a module

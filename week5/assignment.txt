@@ -1,0 +1,64 @@
+
+1. Provide the domain name associated with your load balancer so I can test web server access to it.
+http://minions-balancer-1898797850.us-west-2.elb.amazonaws.com/
+
+2. Describe the results of testing your load balancer when you shut down one, then both, back-end instances, and when you restore them.
+I tested shutting down one webserver on my personal instance, which has a different index.html than Mufassa and Dave 
+(they have the default apache2 index, and mine is a simple html page with a grey background), and before I stopped apache, I would see the default
+apache site come up some of the time, and every once in a while my grey page would be served instead. But when I shut down apache on my instance, 
+only the default apache page would come up and the EC2 management console eventually indicated one of the webservers was down, although it took longer
+than expected. Apache also came back up a bit faster than expected on my instance (I didn't specifically start the service again), but I guess that's a good thing.
+
+3. Provide excerpts from web server logs from each of your web server instances showing load balancer health checks and accesses to your web content.
+Here are a few of many:
+
+10.0.9.9 - - [26/Jul/2015:06:50:13 +0000] "GET /index.html HTTP/1.1" 200 544 "-" "ELB-HealthChecker/1.0"
+10.0.9.205 - - [26/Jul/2015:06:50:24 +0000] "GET /index.html HTTP/1.1" 200 544 "-" "ELB-HealthChecker/1.0"
+10.0.9.9 - - [26/Jul/2015:06:50:43 +0000] "GET /index.html HTTP/1.1" 200 544 "-" "ELB-HealthChecker/1.0"
+10.0.9.205 - - [26/Jul/2015:06:50:54 +0000] "GET /index.html HTTP/1.1" 200 544 "-" "ELB-HealthChecker/1.0"
+10.0.9.9 - - [26/Jul/2015:06:51:13 +0000] "GET /index.html HTTP/1.1" 200 544 "-" "ELB-HealthChecker/1.0"
+10.0.9.205 - - [26/Jul/2015:06:51:24 +0000] "GET /index.html HTTP/1.1" 200 544 "-" "ELB-HealthChecker/1.0"
+10.0.9.9 - - [26/Jul/2015:06:51:43 +0000] "GET /index.html HTTP/1.1" 200 544 "-" "ELB-HealthChecker/1.0"
+10.0.9.205 - - [26/Jul/2015:06:51:54 +0000] "GET /index.html HTTP/1.1" 200 544 "-" "ELB-HealthChecker/1.0"
+10.0.9.9 - - [26/Jul/2015:06:52:13 +0000] "GET /index.html HTTP/1.1" 200 544 "-" "ELB-HealthChecker/1.0"
+10.0.9.205 - - [26/Jul/2015:06:52:24 +0000] "GET /index.html HTTP/1.1" 200 544 "-" "ELB-HealthChecker/1.0"
+10.0.9.9 - - [26/Jul/2015:06:52:43 +0000] "GET /index.html HTTP/1.1" 200 544 "-" "ELB-HealthChecker/1.0"
+10.0.9.205 - - [26/Jul/2015:06:52:54 +0000] "GET /index.html HTTP/1.1" 200 544 "-" "ELB-HealthChecker/1.0"
+10.0.9.9 - - [26/Jul/2015:06:53:13 +0000] "GET /index.html HTTP/1.1" 200 544 "-" "ELB-HealthChecker/1.0"
+10.0.9.205 - - [26/Jul/2015:06:53:24 +0000] "GET /index.html HTTP/1.1" 200 544 "-" "ELB-HealthChecker/1.0"
+10.0.9.9 - - [26/Jul/2015:06:53:43 +0000] "GET /index.html HTTP/1.1" 200 544 "-" "ELB-HealthChecker/1.0"
+10.0.9.205 - - [26/Jul/2015:06:53:54 +0000] "GET /index.html HTTP/1.1" 200 544 "-" "ELB-HealthChecker/1.0"
+10.0.9.9 - - [26/Jul/2015:06:54:13 +0000] "GET /index.html HTTP/1.1" 200 544 "-" "ELB-HealthChecker/1.0"
+10.0.9.205 - - [26/Jul/2015:06:54:24 +0000] "GET /index.html HTTP/1.1" 200 544 "-" "ELB-HealthChecker/1.0"
+10.0.9.9 - - [26/Jul/2015:06:54:43 +0000] "GET /index.html HTTP/1.1" 200 544 "-" "ELB-HealthChecker/1.0"
+10.0.9.205 - - [26/Jul/2015:06:54:54 +0000] "GET /index.html HTTP/1.1" 200 544 "-" "ELB-HealthChecker/1.0"
+10.0.9.9 - - [26/Jul/2015:06:55:13 +0000] "GET /index.html HTTP/1.1" 200 544 "-" "ELB-HealthChecker/1.0"
+10.0.9.205 - - [26/Jul/2015:06:55:24 +0000] "GET /index.html HTTP/1.1" 200 544 "-" "ELB-HealthChecker/1.0"
+10.0.9.9 - - [26/Jul/2015:06:55:43 +0000] "GET /index.html HTTP/1.1" 200 544 "-" "ELB-HealthChecker/1.0"
+10.0.9.205 - - [26/Jul/2015:06:55:54 +0000] "GET /index.html HTTP/1.1" 200 544 "-" "ELB-HealthChecker/1.0"
+10.0.9.9 - - [26/Jul/2015:06:56:13 +0000] "GET /index.html HTTP/1.1" 200 544 "-" "ELB-HealthChecker/1.0"
+10.0.9.205 - - [26/Jul/2015:06:56:24 +0000] "GET /index.html HTTP/1.1" 200 544 "-" "ELB-HealthChecker/1.0"
+10.0.9.9 - - [26/Jul/2015:06:56:43 +0000] "GET /index.html HTTP/1.1" 200 544 "-" "ELB-HealthChecker/1.0"
+10.0.9.205 - - [26/Jul/2015:06:56:54 +0000] "GET /index.html HTTP/1.1" 200 544 "-" "ELB-HealthChecker/1.0"
+
+
+4. Indicate the Puppet code you use to replicate content between your web server instances.
+I included this section in the web-server module's init.pp file:
+
+    # To manage the apache2 DocumentRoots of each of our instances so we have consistant web content across instances.
+    file { '/var/www/html':
+        source => "puppet:///modules/web-server/html",
+        # Make sure this is a directory
+        ensure  => directory,
+        mode    => 644,
+        owner   => ubuntu,
+        group   => ubuntu,
+        # Recurse through the folder to synchronize everything
+        recurse => true,
+        # Would probably be wise to ensure apache exists? Might not be necessary.
+        require => Package["apache2"],
+        # One source, to rule them all
+        replace => true,
+    }
+
+
