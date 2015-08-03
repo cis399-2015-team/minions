@@ -1,0 +1,34 @@
+View this alarm in the AWS Management Console:
+https://console.aws.amazon.com/cloudwatch/home?region=us-west-2#s=Alarms&alarm=awsec2-i-9b09a253-High-Network-In
+ 
+Alarm Details:
+- Name:                       awsec2-i-9b09a253-High-Network-In
+- Description:                Created from EC2 Console
+- State Change:               OK -> ALARM
+- Reason for State Change:    Threshold Crossed: 1 datapoint (18714.8) was greater than or equal to the threshold (10.0).
+- Timestamp:                  Monday 03 August, 2015 21:29:59 UTC
+- AWS Account:                006170570170
+ 
+Threshold:
+- The alarm is in the ALARM state when the metric is GreaterThanOrEqualToThreshold 10.0 for 300 seconds. 
+ 
+Monitored Metric:
+- MetricNamespace:            AWS/EC2
+- MetricName:                 NetworkIn
+- Dimensions:                 [InstanceId = i-9b09a253]
+- Period:                     300 seconds
+- Statistic:                  Average
+- Unit:                       not specified
+ 
+State Change Actions:
+- OK: 
+- ALARM: [arn:aws:sns:us-west-2:006170570170:minions_alarms]
+- INSUFFICIENT_DATA: 
+ 
+ 
+--
+If you wish to stop receiving notifications from this topic, please click or visit the link below to unsubscribe:
+https://sns.us-west-2.amazonaws.com/unsubscribe.html?SubscriptionArn=arn:aws:sns:us-west-2:006170570170:minions_alarms:74327bd1-29cd-4614-af20-55dbd45510b0&Endpoint=o.lil.g@live.com
+ 
+Please do not reply directly to this email. If you have any questions or comments regarding this email, please contact us at https://aws.amazon.com/support
+
