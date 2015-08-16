@@ -1,0 +1,39 @@
+- Concrete project goals:
+  - Set up a SQL server on one of our instances
+  - Manage SQL client installation with puppet on our other instances
+  - Make a basic fake database for something
+  - Maybe make it possible to interact with via a webpage
+
+- Effect on user population
+  - Making it have a friendlier interface (web interface) would make it easier for users to interact with the database without needing to know the syntax
+  - If the database/SQL program has problems - we need to have contingency plans to get it back up/repaired as fast as possible (puppet management) having it distributed across systems is useful too
+  
+- Security Issues
+  - Making sure users have appropriate access to appropriate tables, not able to insert/delete/modify inappropriate database information
+
+- Work needed to complete project
+  - Installing the SQL server to be run on one instance
+  - Create a puppet module to manage the installation/contingency for other instances accessing the server instance
+  - Set up the actual database with mock information and access privileges
+  - Use PHP or something similar to hook it up to a webpage
+
+
+Follow-up Questions:
+- What SQL server are you planning to use?
+  - MySQL
+
+- What specific web interface front end or application might you use to demonstrate the database functionality?
+  - Possibly create a fake company database with employee information/product tables to demonstrate 
+    different levels of appropriate access. I'm familiar with using PHP to connect to MySQL database hosts,
+    but I'm also open to suggestions (mostly because PHP is the devil).
+
+- It's often possible to set up database replication to provice better data protection or even load-balancing
+  for access. Is there a way to do that with your chosen database system? What kind of effort would that involve?
+  - I think that was something we had in mind when thinking of this as a project, honestly I'm not that familiar 
+    with how to do it *yet* but we can all do some research! If it would require using a different server though,
+    it might be an additional hurdle.
+
+- Can you provide automation or self-service for users to create and manage their databases?
+  - That's a reasonable expectation, we will talk about it further and come up with a more concrete idea/use cases.
+
+
