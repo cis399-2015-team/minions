@@ -1,0 +1,17 @@
+== MySQL Server configuration management ==
+There is a puppet module which is attached to the minions-puppetmaster node to manage the status/configuration
+of the mysql server found there.
+
+This package overwrites the /etc/mysql/my.cnf file with the file within the module called mysql-server_config, 
+which was copied from the default initially. The file sets the mode to read/write by owner, and ensures the
+package is installed before being finished with the file.
+
+The service is enabled to automatically start at boot time, restart if it is not running, allows status info,
+allows restarting, and also requries the mysql-server package and configuration file to be present, and and
+any changes to the config file to cause the service to restart.
+
+
+
+== A Note on the Database ==
+For convenience, we are using the database Lily created for her Database Processing class last fall for the 
+fake coffee company "Brewed Awakening" written in MySQL using InnoDB (a storage engine for MySQL).
