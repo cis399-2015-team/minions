@@ -1,0 +1,5 @@
+For this final projects: 
+
+- I added more configuration to the sql server (cache handling, connection handling, session variable save state and handling) You will see those commits in minions-puppet 
+- I also build the webpage that is user friendly and has basic form that user can fill out in order to update the database. 
+
