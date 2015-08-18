@@ -11,6 +11,24 @@ allows restarting, and also requries the mysql-server package and configuration 
 any changes to the config file to cause the service to restart.
 
 
+== phpMyAdmin to manage tables and DBA users ==
+After struggling in the console for quite some time, I decided to try to use phpMyAdmin for database management.
+For the purpose of creating multiple phpMyAdmin accounts for pretend DBAs who would need to be able to manage
+their own table set at will (and so their accounts could be removed if/when they left this company), the 
+following php5 modules were used: php5-gd, php5-mysql php5-mcrypt.
+
+In particular, mycrypt supports a variety of block algorithms: ES, TripleDES, Blowfish (default), 3-WAY, SAFER-SK64,
+SAFER-SK128, TWOFISH, TEA, RC2 and GOST in CBC, OFB, CFB and ECB cipher modes. Additionally, it supports RC6 and 
+IDEA which are considered "non-free". CFB/OFB are 8bit by default. To be used to secure DBA user accounts.
+
+To connect to the web management interface, I enabled the apache web-server module on the puppetmaster EC2 instance 
+(since it hosts the mysql server and is the designated instance for admin tasks) so - you must go to the IP/DNS of
+the minions-puppetmaster instance (currently http://52.27.162.176/phpmyadmin) and enter the administrator credentials
+sent to you. From there, you may perform actions similar to using something like MySQL workbench, but hosted on the 
+web! Users may only see/modify tables that they own.
+
+This blog post greatly assisted me in its configuration: https://alandoyle.com/tutorials/configuring-phpmyadmin-for-multiple-users/
+
 
 == A Note on the Database ==
 For convenience, we are using the database Lily created for her Database Processing class last fall for the 
