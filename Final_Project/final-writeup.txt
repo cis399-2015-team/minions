@@ -54,3 +54,22 @@ web! Users may only see/modify tables that they own.
 
 This blog post greatly assisted me in its configuration: 
 https://alandoyle.com/tutorials/configuring-phpmyadmin-for-multiple-users/
+
+
+== Making the web interface and failures ==
+So, neither my nor Mustafa's web interfaces fit well with this schema. My web interface was designed for this
+database, but for a different class, and I can't figure out why my PHP can't connect to a remote database, and 
+Mustafa's is too insecure to put on the web. Both attempts can be found in the minions repository under conspicuous 
+names.
+
+The design of my web interface was a bit of slightly secure PHP cleverness Prof. Wilson showed us in 451, storing
+the connection data is always the issue - so some degrees of separation were implemented, and the data was stored in
+a PHP file in the same directory, but if someone tried to URL hack and see the raw connection data they would see
+a blank page with no useful source to read because PHP only displays what you specifically tell it to display! I 
+can't remember how someone might break this, just that it is possible. Since I used php scripts, I was also able to
+do a basic level of SQL-injection-protection, but since I can't even access the database, I guess it is even more 
+secure!
+
+I easily spent the most time on this, and regret that I didn't leave enough time to ask questions.
+
+Thank you for the wonderful class!
